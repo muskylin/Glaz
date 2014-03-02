@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.cms.bb.dao.IN_OUT_D">
+    <!--<insert id="insertIN_OUT_Case" parameterType="com.app.cms.bb.entity.IN_OUT_E">-->
+        <!--insert into in_out(id,op_time,tel,money,op_type)-->
+        <!--values(#{id},#{op_time},#{tel},#{money},#{op_type})-->
+    <!--</insert>-->
+    <select id="countAll" resultType="int">
+        select count(*) c from in_out;
+    </select>
+</mapper>

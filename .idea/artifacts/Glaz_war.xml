@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="Glaz:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="Glaz.war">
-      <element id="artifact" artifact-name="Glaz:war exploded" />
-    </root>
-  </artifact>
-</component>

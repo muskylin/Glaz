@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="Glaz:war exploded">
-    <output-path>$PROJECT_DIR$/target/Glaz</output-path>
+    <output-path>$PROJECT_DIR$/src/main/webapp</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Glaz/web/Web" />
       <element id="directory" name="WEB-INF">

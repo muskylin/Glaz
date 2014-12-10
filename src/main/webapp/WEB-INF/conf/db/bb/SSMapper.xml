@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.cms.bb.dao.SscelltblD">
+
+    <select id="getAllStocks" resultType="String">
+        select CONCAT(cell_id,'.',cell_typ) from sscelltbl;
+    </select>
+    <select id="getShStocks" resultType="String">
+        select stock_id from sstockshtbl;
+    </select>
+    <select id="getSzStocks" resultType="String">
+        select stock_id from sstocksztbl;
+    </select>
+    <select id="getCybStocks" resultType="String">
+        select stock_id from sstockcybtbl;
+    </select>
+
+    <select id="getOneStockRecords" resultType="com.app.cms.bb.entity.StockInfo" parameterType="map">
+        select cell_id as stock,cell_dat as date,open_prc as open,high_prc as high,low_prc as low,close_prc as close,volume_num from sscellhistbl where cell_id = #{stock_id} and cell_dat &lt; #{date_str} ORDER BY cell_dat desc;
+    </select>
+
+    <insert id="insertStockHis" parameterType="com.app.cms.bb.entity.SscellhistblE">
+        insert into sscellhistbl(cell_id,cell_dat,open_prc,high_prc,low_prc,close_prc,volume_num,adjc_prc)
+        values(#{cell_id},#{cell_dat},#{open_prc},#{high_prc},#{low_prc},#{close_prc},#{volume_num},#{adjc_prc})
+    </insert>
+
+    <insert id="addAllStocks"  parameterType="java.util.List">
+
+        insert into sscellhistbl(cell_id,cell_dat,open_prc,high_prc,low_prc,close_prc,volume_num,adjc_prc)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.cell_id},#{item.cell_dat},#{item.open_prc},#{item.high_prc},#{item.low_prc},#{item.close_prc},#{item.volume_num},#{item.adjc_prc})
+        </foreach>
+    </insert>
+    <insert id="addOneStockRecords"  parameterType="java.util.List">
+
+        insert into sstockinfotbl(stock,date,open,high,low,close,volume_num,diff,macd,ma5,ma10,ma20,ma30,ma60,ma90,ma140,ma250,alg1,alg2,alg3,alg4,alg5)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.stock},#{item.date},#{item.open},#{item.high},#{item.low},#{item.close},#{item.volume_num},#{item.diff},#{item.macd},#{item.ma5},#{item.ma10},#{item.ma20},#{item.ma30},#{item.ma60},#{item.ma90},#{item.ma140},#{item.ma250},#{item.alg1},#{item.alg2},#{item.alg3},#{item.alg4},#{item.alg5})
+        </foreach>
+    </insert>
+    <select id="getAllStocks1" resultType="String">
+        select CONCAT(cell_id,'.',cell_typ) from sscelltbl limit 500;
+    </select>
+    <select id="getAllStocks2" resultType="String">
+        select CONCAT(cell_id,'.',cell_typ) from sscelltbl limit 500,500;
+    </select>
+    <select id="getAllStocks3" resultType="String">
+        select CONCAT(cell_id,'.',cell_typ) from sscelltbl limit 1000,500;
+    </select>
+    <select id="getAllStocks4" resultType="String">
+        select CONCAT(cell_id,'.',cell_typ) from sscelltbl limit 1500,500;
+    </select>
+    <select id="getAllStocks5" resultType="String">
+        select CONCAT(cell_id,'.',cell_typ) from sscelltbl limit 2000,500;
+    </select>
+</mapper>
